@@ -8,20 +8,6 @@ import datetime as dt
 def welcome(request):
     return render(request, 'welcome.html')
 
-# def news_of_day(request):
-#    date = dt.date.today()
-
-    # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
-#    day = convert_dates(date)
-#    html = f'''
-#        <html>
-#            <body>
-#                <h1> News for {day}, {date.day}-{date.month}-{date.year}</h1>
-#            </body>
-#        </html>
-#            '''
-#    return HttpResponse(html)
-
 def news_today(request):
     date =  dt.date.today()
     news = Article.todays_news()
@@ -62,4 +48,4 @@ def article(request,article_id):
         article = Article.objects.get(id = article_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"all-news/article.html", {"article":article})         
+    return render(request,"all-news/article.html", {"article":article})
